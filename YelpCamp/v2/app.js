@@ -40,7 +40,7 @@ app.get("/", function(req, res){
 //INDEX - show all campgrounds
 app.get("/campgrounds", function(req, res){
     // Get all campgrounds from DB
-    Campground.find({}, function(err, allCampgrounds){
+    Campground.find({}, function(err, allCampgrounds){      // 从数据库中找到满足条件的数据
        if(err){
            console.log(err);
        } else {
@@ -57,7 +57,7 @@ app.post("/campgrounds", function(req, res){
     var desc = req.body.description;
     var newCampground = {name: name, image: image, description: desc}
     // Create a new campground and save to DB
-    Campground.create(newCampground, function(err, newlyCreated){
+    Campground.create(newCampground, function(err, newlyCreated){    //定义模型实例并保存到数据库
         if(err){
             console.log(err);
         } else {
