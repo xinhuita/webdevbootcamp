@@ -3,18 +3,18 @@ var express     = require("express"),
     bodyParser  = require("body-parser"),
     mongoose    = require("mongoose")
 
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://localhost/yelp_camp");   //连接到本地数据库
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 // SCHEMA SETUP
-var campgroundSchema = new mongoose.Schema({
+var campgroundSchema = new mongoose.Schema({            //定义数据库模型骨架
    name: String,
    image: String,
    description: String
 });
 
-var Campground = mongoose.model("Campground", campgroundSchema);
+var Campground = mongoose.model("Campground", campgroundSchema);  //从模式创建模型
 
 // Campground.create(
 //      {
