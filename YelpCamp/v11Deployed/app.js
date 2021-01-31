@@ -38,14 +38,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req, res, next){
+app.use(function(req, res, next){              // app.use()加载用来处理http请求的中间件，当一个请求来的时候，会依次被这些middlewares处理
    res.locals.currentUser = req.user;
    res.locals.error = req.flash("error");
    res.locals.success = req.flash("success");
    next();
 });
 
-app.use("/", indexRoutes);
+app.use("/", indexRoutes);                     //当一个路由有多个子路由时，callback放一个router对象
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
