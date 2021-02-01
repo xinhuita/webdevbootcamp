@@ -19,9 +19,9 @@ var commentRoutes    = require("./routes/comments"),
 var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v10";
 mongoose.connect(url);
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));  // express接受post请求参数需要借助body-parser
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public")); // 方便的托管静态资源，例如img, CSS, js
 app.use(methodOverride("_method"));
 app.use(flash());
 // seedDB(); //seed the database
